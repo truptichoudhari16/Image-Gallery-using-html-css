@@ -1,0 +1,132 @@
+/* Universal Selector  */
+*{
+    margin: 0;
+    padding: 0;
+
+    /* padding ya border add karane per box ka size bada nhi hona chaiye means box ka size remain change and content ka jo block h usaka size chota hojayega  */
+    box-sizing: border-box;
+}
+
+/* best practice always use wrapper for maintain your web page size  */
+
+#wrapper{
+    /* jitane mere view-port ki height h utni wrapper ki height honi chaiye  */
+    height: 100vh;
+
+    /* x-axis me move nhi hona chaiye chaiye (left-right me) */
+    overflow-x: hidden;
+
+    /* y-axis means vertically move hona chaiye isl auto  */
+    overflow-y: auto;
+}
+.container{
+    height: 100%;
+    /* maximum 1200 px tak hi badega size  */
+    max-width: 1200px;
+
+    /* (placed in center)  left side or right side se margin lagate hai jisse content center me ajaye  */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container h1{
+    /* 20-top , 0-right */
+    margin: 20px 100px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+
+.gallery{
+    /* by using flex elements  are placed horixontally means side by side  */
+    display: flex;
+
+    /* flex wrap se sare elements niche ajayege if they can not place in same row  */
+    flex-wrap: wrap;
+
+    /* spaces  between multiple elements  */
+    justify-content: space-between;
+}
+
+.card{
+
+    /* 32+32+32 = 96, 4 for sapcing, 96+4 = 100  */
+    width: 32%;
+
+    /* image ko overlap karane ke liye uske nearest ancesstor ki position relative rahegi  */
+    position: relative;
+
+    margin-bottom: 20px;
+
+    /* Img corners ko rounded karane ke liye border radius  */
+    border-radius: 10px;
+
+    /* kisi bhi type ka overflow hora h to use hide kradena  */
+    overflow: hidden;
+}
+
+.card img{
+
+    /* 32% ke hisab se height or width set hojayegi  */
+     width: 100%;
+     height: 100%;
+    
+     /* image ko black-and-white kr=arane ke liye  */
+     filter: grayscale(100%);
+
+     /* image ke bottom me shadow  */
+     box-shadow: 0 0 20px #333;
+
+     object-fit: cover;
+}
+
+.card:hover {
+
+    /* size of card when we hover  */
+    transform : scale(1.03);
+
+     /* 1 sec time lenga hover karane ko  */
+    transition: 0.5s;
+
+    /* drop-shadow() -> apply the shadow effect to the input image  */
+   /* card per shadow karane ke liye  */
+    filter: drop-shadow(0 0 10px #333);
+}
+
+.card:hover img {
+
+    /* image ka original clr show karane ke liye  */
+    filter:grayscale(0%);
+}
+
+/* image captions ko image per show karana hai  */
+
+.card figcaption{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 25px;
+    /*  as per card size  */
+    width: 100%;
+    height: 20%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    /* tex t dikhega hi nhi  */
+    opacity: 0;
+    border-radius: 0 0 10px 10px;
+
+    /* image ke niche shodow  */
+    background: linear-gradient(0  deg, rgba(0,0,0,0.5) 0%, rgb(255, 255, 255,0) 100% );
+    transition: 0.3s;
+
+}
+
+/* caption show karana ke liye */
+
+.card:hover figcaption{
+    opacity: 1;
+    transform: scale(1.03 );
+}
+
+    
